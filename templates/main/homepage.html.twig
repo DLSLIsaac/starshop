@@ -1,0 +1,50 @@
+{# Template inheritance in twig #}
+{% extends 'base.html.twig'  %}
+
+{# 
+  Within a block you can bring content from the parent to the child template with '{{ parent() }}' instead of 
+  replacing it 
+#}
+{% block title %}Starcshop: Beam up some parts!{% endblock %}
+
+{% block body %}
+  <h1>StarShop: your monopoly-busting option for Starship parts!</h1>
+
+  <div>
+    {# * Twig syntax 1: say something #}
+    <h2>Browse through {{ numberOfStarships }} starships!</h2>
+
+    {# * Twig syntax 2: Do something #}
+    {% if numberOfStarships > 400 %}
+      {# the 'if' is a tag #}
+      <p>That´s a shipload of ships!</p>
+    {% endif %}
+
+    {# * Twig syntax 3: comments(Alrady using it) #}
+  </div>
+
+  <div>
+    <h3>My Ship</h3>
+
+    <table>
+      <tr>
+        <th>Name</th>
+        <td>{{ myShip.name }}</td>
+      </tr>
+      <tr>
+        <th>Class</th>
+        <td>{{ myShip.class }}</td>
+      </tr>
+      <tr>
+        <th>Captain</th>
+        {# Twig filters: They are functions and function. The are used after the value plus '|' and the filter name #}
+        {# Twig filters can be concatenated after each other #}
+        <td>{{ myShip.captain|upper }}</td>
+      </tr>
+      <tr>
+        <th>Status</th>
+        <td>{{ myShip.status }}</td>
+      </tr>
+    </table>
+  </div>
+{% endblock %}
