@@ -12,10 +12,10 @@
 
   <div>
     {# * Twig syntax 1: say something #}
-    <h2>Browse through {{ numberOfStarships }} starships!</h2>
+    <h2>Browse through {{ ships|length * 10 }} starships!</h2>
 
     {# * Twig syntax 2: Do something #}
-    {% if numberOfStarships > 400 %}
+    {% if ships|length > 2 %}
       {# the 'if' is a tag #}
       <p>That´s a shipload of ships!</p>
     {% endif %}
@@ -29,7 +29,11 @@
     <table>
       <tr>
         <th>Name</th>
-        <td>{{ myShip.name }}</td>
+        <td>
+          <a href="{{ path('app_starship_show', { id: myShip.id } ) }}">
+            {{ myShip.name }}
+          </a>
+        </td>
       </tr>
       <tr>
         <th>Class</th>
